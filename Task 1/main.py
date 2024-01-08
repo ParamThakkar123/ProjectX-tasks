@@ -1,31 +1,11 @@
 import pygame
-import random
+from particle import Particle
 
 WIDTH, HEIGHT = 800, 600
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
 
-class Particle:
-    def __init__(self, x, y, size):
-        self.x = x
-        self.y = y
-        self.size = size
-        self.dx = random.uniform(-4, 4)
-        self.dy = random.uniform(-4, 4)
-        
-    def move(self):
-        self.x += self.dx
-        self.y += self.dy
-        
-        if self.x <= 0 or self.x >= WIDTH:
-            self.dx = -self.dx
-        if self.y <= 0 or self.y >= HEIGHT:
-            self.dy = -self.dy
-            
-    def draw(self, screen):
-        pygame.draw.circle(screen, (0, 0, 255), (self.x, self.y), 12)
-        
 particle = Particle(WIDTH // 2, HEIGHT // 2, 5)
 
 run = True
