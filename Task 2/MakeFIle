@@ -1,27 +1,11 @@
-# Compiler and flags
 CC = g++
 CFLAGS = -std=c++11
 
-# Source file
-SRCS = lab.cpp
+all: labyrinth
 
-# Object file
-OBJS = $(SRCS:.cpp=.o)
+labyrinth: labyrinth.cpp
+	$(CC) $(CFLAGS) -o labyrinth labyrinth.cpp
 
-# Target executable
-TARGET = labyrinth
-
-# Default target
-all: $(TARGET)
-
-# Compile source file into object file
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# Link object file into the executable
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
-
-# Clean up object file and the executable
+.PHONY: clean
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f labyrinth
