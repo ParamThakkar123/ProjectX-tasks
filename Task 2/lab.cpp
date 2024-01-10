@@ -5,6 +5,8 @@
 using namespace std;
 
 vector<vector<string>> ans;
+vector<vector<string>> original;
+
 int cmp = 0;
 
 void dfs(int i, int j, int cnt, vector<vector<string>> &arr)
@@ -65,7 +67,21 @@ int main()
 
     if (cmp == 0)
     {
+        ans = arr; // Store the original grid
+        original = arr;
+    }
+
+    if (cmp == 0)
+    {
         outFile << -1 << endl;
+        for (int i = 0; i < 5; i++)
+        {
+            for (auto j : original[i])
+            {
+                outFile << j << " ";
+            }
+            outFile << endl;
+        }
     }
     else
     {
